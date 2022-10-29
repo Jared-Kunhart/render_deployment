@@ -10,7 +10,7 @@ Check out [Removing and Renewing PSQL Database](#removing-and-renewing-psql-data
 
 ## App Academy Projects
 
-#### - First App Academy Project (PUG)
+### - First App Academy Project (PUG)
 
 This link will carry you most of the way. [https://render.com/docs/migrate-from-heroku](https://render.com/docs/migrate-from-heroku)
 
@@ -28,19 +28,19 @@ pg_restore --verbose  --no-acl --no-owner -d pg_restore --verbose  --no-acl --
 - **Make sure to delete the 0.0.0.0/0 connection once you are done.**
 
 
-#### - **Second App Academy Project (React/Express)**
+### - **Second App Academy Project (React/Express)**
 - Similar to the first project, you’ll need to add all the secrets it lists, including AWS keys if they were used.
 
 
-#### - **Third App Academy Project (React/Flask) -**
+### - **Third App Academy Project (React/Flask) -**
+Similar to Capstone
 
 
-
-#### - **Capstone App Academy Project (React/Flask or React/Express)**
+### - **Capstone App Academy Project (React/Flask or React/Express)**
 
 Thank [David Rogers](https://github.com/9ziggy9) for most, if not all, of this. This is just edited for students that have already graduated.
 
-##### Part A: Adjust configuration for building static files for React
+#### Part A: Adjust configuration for building static files for React
 
 In the **app/__init.py__** file, you will configure where React will build the application, and the URL for the static resources for server-side rendering.
 
@@ -52,7 +52,7 @@ app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 # ...
 ```
 
-##### Part B (Recommended): Adjust build script for React-App
+#### Part B (Recommended): Adjust build script for React-App
 
 Navigate to the __react-app/package.json__ file, and add `CI=false` to the build script.
 
@@ -79,7 +79,7 @@ Click the "Create Database" button to create the new Postgres database instance.
 
 You can access this information anytime by going back to your Dashboard, and clicking on the database instance.
 
-##### Part D: Create a New Web Service
+#### Part D: Create a New Web Service
 
 From the Dashboard, click on the "New +" button in the navigation bar, and click on "Web Service" to create the application that will be deployed.
 
@@ -87,7 +87,7 @@ From the Dashboard, click on the "New +" button in the navigation bar, and click
 
 Look for the name of the application you want to deploy, and click the "Connect" button to the right of the name. Now, fill out the form to configure the build and start commands, as well as add the environment variables to properly deploy the application.
 
-##### - Configure the Start and Build Commands
+#### - Configure the Start and Build Commands
 
 Start by giving your application a name. This is the name that will be included the URL of the deployed site, so make sure it is clear and simple. The name should be entered in sword-case.
 
