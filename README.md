@@ -4,9 +4,7 @@
 
 Navigate to the [Render homepage](https://render.com/) and click on "Get Started". On the Sign-Up page, click on the GitHub button. This will allow you to sign in to Render through your GitHub account, and easily connect your repositories to Render for deployment. Follow the instructions to complete your registration and verify your account information.
 
-<sub>**Note: The main limitation of the free Render Postgres database instance is that it will be deleted after 90 days. In order to keep your application up and running, you MUST create a new database instance before the 90 day period ends. </sub>
-
-Check out [Removing and Renewing PSQL Database](#removing-and-renewing-psql-database) for more information.
+**Note: The main limitation of the free Render Postgres database instance is that it will be deleted after 90 days. In order to keep your application up and running, you MUST create a new database instance before the 90 day period ends. Check out [Removing and Renewing PSQL Database](#removing-and-renewing-psql-database) for more information.
 
 ## App Academy Projects
 
