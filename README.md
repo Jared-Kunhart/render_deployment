@@ -56,7 +56,7 @@ app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 
 Navigate to the __react-app/package.json__ file, and add `CI=false` to the build script.
 
-```json
+```js
 // react-app/package-json file
 // ...
     "build": "CI=false && react-scripts build",
