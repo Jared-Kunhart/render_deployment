@@ -22,7 +22,7 @@ This link will carry you most of the way. [https://render.com/docs/migrate-from-
 - That adds an External Database URL above, copy and paste for Step 4 so that your command should look similar to -
 
 ```
-pg_restore --verbose  --no-acl --no-owner -d pg_restore --verbose  --no-acl --no-owner -d postgres://postgresql_acute_25390_user:BtzXa5yMKVS5@dpg5ll8g-aoregon-postgresrendercom/postgresql_acute_250 latest.dump
+pg_restore --verbose  --no-acl --no-owner -d pg_restore --verbose  --no-acl --no-owner -d postgres://yourpostgres_user:BtzXa5yMKVS5@dpg5ll8g-your-postgres.render.com/postgresql_name_250 latest.dump
 ```
 
 - **Make sure to delete the 0.0.0.0/0 connection once you are done.**
