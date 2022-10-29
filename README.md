@@ -29,7 +29,7 @@ pg_restore --verbose  --no-acl --no-owner -d pg_restore --verbose  --no-acl --
 
 
 ### - **Second App Academy Project (React/Express)**
-Similar to the first project, you’ll need to add all the secrets it lists, including AWS keys if they were used.
+Similar to the first project, just adding more keys/secrets this time, including AWS keys if they were used.
 
 
 ### - **Third App Academy Project (React/Flask) -**
