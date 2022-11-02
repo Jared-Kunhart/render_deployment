@@ -4,19 +4,22 @@
 
 Navigate to the [Render homepage](https://render.com/) and click on "Get Started". On the Sign-Up page, click on the GitHub button. This will allow you to sign in to Render through your GitHub account, and easily connect your repositories to Render for deployment. Follow the instructions to complete your registration and verify your account information.
 
-**Note: The main limitation of the free Render Postgres database instance is that it will be deleted after 90 days. In order to keep your application up and running, you MUST create a new database instance before the 90 day period ends. Check out [Removing and Renewing PSQL Database](#removing-and-renewing-psql-database) for more information.
+## Limitations:
+- The main limitation of the free Render Postgres database instance is that it will be deleted after 90 days. In order to keep your application up and running, you MUST create a new database instance before the 90 day period ends. Check out [Removing and Renewing PSQL Database](#removing-and-renewing-psql-database) for more information.
+- You may only have 'one active free tier database'.
+- Render.com will automatically create a PAID postgresql database when you deploy a web service.
 
 ## App Academy Projects
 
 ### - First App Academy Project (PUG)
 
-**Using Heroku Migration starts you off with a 7$ psql starter plan.**
+**-Using Heroku Migration starts you off with a 7$ psql starter plan.-**
 
-This link will carry you most of the way. [https://render.com/docs/migrate-from-heroku](https://render.com/docs/migrate-from-heroku)
+This link shows you how to create a web service and migrate your data from Heroku database to Renders database. Use this option if you have a ton of data added to your heroku that isn't normally seeded. It costs 7$ monthly but you can cancel  [https://render.com/docs/migrate-from-heroku](https://render.com/docs/migrate-from-heroku)
 
 **Everything else below was not found in the link above or wasn't clear in the steps.**
-- You’ll need to add a credit card even if you use free plans. **Using Heroku Migration starts you off with a 7$ psql starter plan.** 
 - **Make sure to delete the paid 'starter' database and go with a free plan database.** You only need one psql database, link all your projects to the one database, use the transfer for that new database. They won't charge you unless you select a paid plan upon creating a new service.
+- Alternatively, you can
 - In your GitHub project repo main folder, create a file named Procfile. Put this text inside it. ***web: npm start***
 - In your render dashboard ⇾ click your named project web service ⇾ click environment tab, you’ll need to add the DATABASE_URL and SESSION_SECRET the CLI Plugin generated.
 - When copying data from PostgreSQL, you need to set up the External Database URL for the last step. Go to your dashboard, go into the PostgreSQL database, scroll down to access control and add 0.0.0.0/0
