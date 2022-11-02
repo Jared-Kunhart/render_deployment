@@ -11,6 +11,7 @@ Navigate to the [Render homepage](https://render.com/) and click on "Get Started
 ### - First App Academy Project (PUG)
 
 **Using Heroku Migration starts you off with a 7$ psql starter plan.**
+
 This link will carry you most of the way. [https://render.com/docs/migrate-from-heroku](https://render.com/docs/migrate-from-heroku)
 
 **Everything else below was not found in the link above or wasn't clear in the steps.**
