@@ -27,7 +27,7 @@ This link shows you how to create a web service and migrate your data from Herok
 - That adds an External Database URL above, copy and paste for Step 4 so that your command should look similar to -
 
 ```
-pg_restore --verbose  --no-acl --no-owner -d pg_restore --verbose  --no-acl --no-owner -d postgres://yourpostgres_user:BtzXaS5@dpg5l8g-your-postgres.render.com/postgresql_name_250 latest.dump
+pg_restore --verbose  --no-acl --no-owner -d <EXTERNAL CONNECTION STRING> latest.dump
 ```
 
 - **Make sure to delete the 0.0.0.0/0 connection once you are done.**
