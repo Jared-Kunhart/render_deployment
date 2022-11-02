@@ -10,10 +10,11 @@ Navigate to the [Render homepage](https://render.com/) and click on "Get Started
 
 ### - First App Academy Project (PUG)
 
+**Using Heroku Migration starts you off with a 7$ psql starter plan.**
 This link will carry you most of the way. [https://render.com/docs/migrate-from-heroku](https://render.com/docs/migrate-from-heroku)
 
 **Everything else below was not found in the link above or wasn't clear in the steps.**
-- You’ll need to add a credit card even if you use free plans. Using Heroku Migration starts you off with a 7$ psql starter plan. Make sure to delete the paid 'starter' database and go with a free plan database. They won't charge you unless you select a paid plan upon creating a new service.
+- You’ll need to add a credit card even if you use free plans. **Using Heroku Migration starts you off with a 7$ psql starter plan.** Make sure to delete the paid 'starter' database and go with a free plan database. They won't charge you unless you select a paid plan upon creating a new service.
 - In your GitHub project repo main folder, create a file named Procfile. Put this text inside it. ***web: npm start***
 - In your render dashboard ⇾ click your named project web service ⇾ click environment tab, you’ll need to add the DATABASE_URL and SESSION_SECRET the CLI Plugin generated.
 - When copying data from PostgreSQL, you need to set up the External Database URL for the last step. Go to your dashboard, go into the PostgreSQL database, scroll down to access control and add 0.0.0.0/0
