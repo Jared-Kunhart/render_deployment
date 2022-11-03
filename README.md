@@ -10,7 +10,7 @@ Navigate to the [Render homepage](https://render.com/) and click on "Get Started
 - Render.com may automatically create a **PAID** postgresql database when you deploy a web service.
 - Double check to make sure you have no -Starter Plan- databases if you don't want to be charged.
 - If the name for your application already exists, it seems Render adds a hash afterward, i.e. I named my app 'test-deploy', Render did not provide any feedback that this was already used, and just named my app 'test-deploy-ajhv'.
-- There is a [Migration](#migration) guide below for convenience but requires spending money.
+- There is a [Migration](#migration) guide at the bottom for convenience/speed/data-saving but requires spending money.
 
 ## App Academy Projects
 
