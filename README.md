@@ -23,7 +23,7 @@ Click the "Create Database" button to create the new Postgres database instance.
 
 You can access this information anytime by going back to your Dashboard, and clicking on the database instance.
 
-Now setup the External Database URL, Scroll down to access control and add 0.0.0.0/0 and save. 
+Now setup the External Database URL, Scroll down to access control and add 0.0.0.0/0 and save. *Make sure to delete the 0.0.0.0/0 connection once you are done with this guide.*
 
 ![image](https://user-images.githubusercontent.com/89172742/199660081-a638c24f-ab3c-47bc-9062-c9cd15576250.png)
 
@@ -31,18 +31,12 @@ That adds an External Database URL and PSQL Command. I recommend saving Internal
 
 ![image](https://user-images.githubusercontent.com/89172742/199660360-943ff5b0-70a7-4d3e-a6db-13549ce1792e.png)
 
-Now we are going to create multiple databases in a single PostgreSQL instance.
+#### Now we are going to create multiple databases in a single PostgreSQL instance.
 
-Now copy and paste that PSQL Command from earlier into the terminal. It should look something like below.
+Copy and paste that PSQL Command from earlier into the terminal. It should look something like below.
 
 ```bash
 user@DESKTOP:~/appacademy/Project1$ PGPASSWORD=password psql -h host -U user appacademy_projects_psql
-
-psql (12.9 (Ubuntu 12.9-0ubuntu0.20.04.1), server 14.5)
-WARNING: psql major version 12, server major version 14.
-         Some psql features might not work.
-SSL connection (protocol: TLSv1.3, cipher: TLS_AES_128_GCM_SHA256, bits: 128, compression: off)
-Type "help" for help.
 
 appacademy_projects_psql=>
 ```
@@ -51,17 +45,16 @@ Now let's create databases for each of our projects we want to host.
 
 ```psql
 CREATE DATABASE project1name_app WITH OWNER appacademy_projects_psql_user;
+CREATE DATABASE project2name_app WITH OWNER appacademy_projects_psql_user;
+CREATE DATABASE project3name_app WITH OWNER appacademy_projects_psql_user;
+CREATE DATABASE project4name_app WITH OWNER appacademy_projects_psql_user;
 ```
 
 If you type \l you can see the databases listed like below.
 
 ![image](https://user-images.githubusercontent.com/89172742/199666807-d386a9f3-c0f6-494a-8dca-93f52db412f2.png)
 
-For every web service we create for our projects, we'll use the Internal Database URL and modify the app database name at the end. The Environment DATABASE_URL will look similar to below.
-
-`postgres://USER:PASSWORD@HOST/project1name_app`
-
-- **Make sure to delete the 0.0.0.0/0 connection once you are done with this guide.**
+For every web service we create for our projects, we'll use the Internal Database URL and modify the app database name at the end (more on this later).
 
 ### - First App Academy Project (PUG)
 
@@ -97,10 +90,10 @@ Now, add your start script in the Start field: **npm start**
 
 Click on the "Advanced" button at the bottom of the form to configure the environment variables your application needs to access to run properly. In the development environment, you have been securing these variables in the .env file, which has been removed from source control. In this step, you will need to input the keys and values for the environment variables you need for production into the Render GUI.
 
-Click on "Add Environment Variable" to start adding all of the variables you need for the production environment.
+Click on "Add Environment Variable" to start adding all of the variables you need for the production environment. Don't forget the **DATABASE_URL** is your **PostgreSQL Database - Internal Database URL** from earlier, except *modified* to match the app/project name.
 
 ```
-DATABASE_URL=postgres://user:password@host/app_name
+DATABASE_URL=postgres://USER:PASSWORD@HOST/project1name_app
 NODE_ENV=production
 SESSION_SECRET=
 ```
