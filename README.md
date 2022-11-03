@@ -268,6 +268,7 @@ When deployment is complete, open your deployed site and check to see if you suc
 This link shows you how to create a web service and migrate your data from Heroku database to Renders database. Use this option if you don't want to lose any heroku database data (data not covered by seeding). [https://render.com/docs/migrate-from-heroku](https://render.com/docs/migrate-from-heroku)
 
 **Everything else below was not found in the link above or wasn't clear in the steps.**
+- Easy setup for projects 1&2.
 - This method creates the Webservice and Database for you.
 - It's possible to use this method to transfer your data to the free database but I haven't got it to work yet.
 - In your GitHub project repo main folder, create a file named Procfile. Put this text inside it. ***web: npm start***
