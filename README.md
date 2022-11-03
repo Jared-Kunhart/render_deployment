@@ -34,10 +34,10 @@ That adds an External Database URL and PSQL Command. I recommend saving Internal
 
 #### Now we are going to create multiple databases in a single PostgreSQL instance.
 
-Copy and paste that PSQL Command from earlier into the terminal. It should look something like below.
+Copy and paste that PSQL Command from earlier into your Ubuntu terminal. It should look similar to below except with your information.
 
 ```bash
-user@DESKTOP:~/appacademy/Project1$ PGPASSWORD=password psql -h host -U user appacademy_projects_psql
+user@DESKTOP:~/appacademy/Project1$ PGPASSWORD=FnMoqtKmyopCaWsRswrd psql -h dpg-cdhkp13jp5aes0i-a.ohio-postgres.render.com -U appacademy_projects_psql_user appacademy_projects_psql
 
 appacademy_projects_psql=>
 ```
