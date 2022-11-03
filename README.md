@@ -7,30 +7,105 @@ Navigate to the [Render homepage](https://render.com/) and click on "Get Started
 ## Limitations:
 - The main limitation of the free Render Postgres database instance is that it will be deleted after 90 days. In order to keep your application up and running, you MUST create a new database instance before the 90 day period ends. Check out [Removing and Renewing PSQL Database](#removing-and-renewing-psql-database) for more information.
 - You may only have 'one active free tier database'.
-- Render.com will automatically create a **PAID** postgresql database when you deploy a web service and don't assign it the free database_url.
+- Render.com will automatically create a **PAID** postgresql database when you deploy a web service and don't assign it the free Database URL.
 - Double check to make sure you have no -Starter Plan- databases if you don't want to be charged.
+- There is a [Migration](#migration) guide below for convenience but requires possibly spending money.
 
 ## App Academy Projects
 
+### - Creating a single free Database to host all your projects.
+
+Click on the "New +" button in the navigation bar, and click on "PostgreSQL" to create your Postgres database instance.
+
+In the name field, give your database a descriptive name. Note that all of your applications will share this database instance, so make it general (for example, you might name it "App-Academy-Projects"). For the region field, choose the location nearest to you. The rest of the fields in this section can be left blank. Make sure to use the **Free** Plan.
+
+Click the "Create Database" button to create the new Postgres database instance. Within a few minutes, your new database will be ready to use. Scroll down on the page to see all of the information about your database, including the hostname, user name and password, and URLs to connect to the database.
+
+You can access this information anytime by going back to your Dashboard, and clicking on the database instance.
+
+Now setup the External Database URL, Scroll down to access control and add 0.0.0.0/0 and save. 
+
+![image](https://user-images.githubusercontent.com/89172742/199660081-a638c24f-ab3c-47bc-9062-c9cd15576250.png)
+
+That adds an External Database URL and PSQL Command. I recommend saving Internal URL, External URL and PSQL Command to notepad for ease of use for the rest of this guide.
+
+![image](https://user-images.githubusercontent.com/89172742/199660360-943ff5b0-70a7-4d3e-a6db-13549ce1792e.png)
+
+Now we are going to create multiple databases in a single PostgreSQL instance.
+
+Now copy and paste that PSQL Command from earlier into the terminal. It should look something like below.
+
+```bash
+user@DESKTOP:~/appacademy/Project1$ PGPASSWORD=password psql -h host -U user appacademy_projects_psql
+
+psql (12.9 (Ubuntu 12.9-0ubuntu0.20.04.1), server 14.5)
+WARNING: psql major version 12, server major version 14.
+         Some psql features might not work.
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_128_GCM_SHA256, bits: 128, compression: off)
+Type "help" for help.
+
+appacademy_projects_psql=>
+```
+
+Now let's create databases for each of our projects we want to host.
+
+```psql
+CREATE DATABASE project1name_app WITH OWNER appacademy_projects_psql_user;
+```
+
+If you type \l you can see the databases listed like below.
+
+![image](https://user-images.githubusercontent.com/89172742/199666807-d386a9f3-c0f6-494a-8dca-93f52db412f2.png)
+
+For every web service we create for our projects, we'll use the Internal Database URL and modify the app database name at the end. The Environment DATABASE_URL will look similar to below.
+
+`postgres://USER:PASSWORD@HOST/project1name_app`
+
+- **Make sure to delete the 0.0.0.0/0 connection once you are done with this guide.**
+
 ### - First App Academy Project (PUG)
 
-**-Using Heroku Migration starts you off with a 7$ psql starter plan.-**
+Open your project in VSCode and Add the following changes into your project.
+The root `package.json's` scripts should look like this:
 
-This link shows you how to create a web service and migrate your data from Heroku database to Renders database. Use this option if you have a ton of data added to your heroku that isn't normally seeded. It costs 7$ monthly but you can cancel  [https://render.com/docs/migrate-from-heroku](https://render.com/docs/migrate-from-heroku)
+```js
+// package.json
+// ...
+    "scripts": {
+        "render-postbuild": "npm run build",
+        "sequelize": "sequelize",
+        "sequelize-cli": "sequelize-cli",
+        "start": "per-env",
+        "start:development": "nodemon -r dotenv/config ./bin/www",
+        "start:production": "node ./bin/www",
+        "build": "echo 'Building....'"
+    },
+// ...
+```
 
-**Everything else below was not found in the link above or wasn't clear in the steps.**
-- **Make sure to delete the paid 'starter' database and go with a free plan database.** You only need one psql database, link all your projects to the one database, use the transfer for that new database. They won't charge you unless you select a paid plan upon creating a new service.
-- Alternatively, you can
-- In your GitHub project repo main folder, create a file named Procfile. Put this text inside it. ***web: npm start***
-- In your render dashboard ⇾ click your named project web service ⇾ click environment tab, you’ll need to add the DATABASE_URL and SESSION_SECRET the CLI Plugin generated.
-- When copying data from PostgreSQL, you need to set up the External Database URL for the last step. Go to your dashboard, go into the PostgreSQL database, scroll down to access control and add 0.0.0.0/0
-- That adds an External Database URL above, copy and paste for Step 4 so that your command should look similar to -
+Commit `git commit -a -m "render deployment"` and push those changes.
+
+Now back to render.com, click on the "New +" button in the navigation bar, and click on "Web Service" to create a new Web Service. If you haven't already, connect your github to see all your repositories. Now connect your first project (Jan/Feb cohorts may have been last to have a pug project). The Name for your web service will be included in the URL (application-name.onrender.com). Leave the root directory field blank. By default, Render will run commands from the root directory. Make sure the Environment field is set set to "Node", the Region is set to the location closest to you, and the Branch is set to "main" and that you select that **Free** plan.
+
+Next, add your Build script. (called "build commands" on render) This is a script that should include everything that needs to happen before starting the server.
+
+```js
+npm install && npm run render-postbuild && npm run build && npm run sequelize db:migrate && npm run sequelize db:seed:all
+```
+
+Now, add your start script in the Start field: **npm start**
+
+Click on the "Advanced" button at the bottom of the form to configure the environment variables your application needs to access to run properly. In the development environment, you have been securing these variables in the .env file, which has been removed from source control. In this step, you will need to input the keys and values for the environment variables you need for production into the Render GUI.
+
+Click on "Add Environment Variable" to start adding all of the variables you need for the production environment.
 
 ```
-pg_restore --verbose  --no-acl --no-owner -d <EXTERNAL CONNECTION STRING> latest.dump
+DATABASE_URL=postgres://user:password@host/app_name
+NODE_ENV=production
+SESSION_SECRET=
 ```
 
-- **Make sure to delete the 0.0.0.0/0 connection once you are done.**
+Now, you are finally ready to deploy! Click "Create Web Service" to deploy your project. The deployment process will likely take about 10-15 minutes if everything works as expected. You can monitor the logs to see your build and start commands being executed, and see any errors in the build process.
 
 
 ### - **Second App Academy Project (React/Express)**
@@ -144,6 +219,26 @@ Now, you are finally ready to deploy! Click "Create Web Service" to deploy your 
 When deployment is complete, open your deployed site and check to see if you successfully deployed your Flask application to Render! You can find the URL for your site just below the name of the Web Service at the top of the page.
 
 (https://this-application-name.onrender.com).
+
+## Migration
+
+**-Using Heroku Migration starts you off with a 7$ psql starter plan.-**
+
+This link shows you how to create a web service and migrate your data from Heroku database to Renders database. Use this option if you don't want to lose any heroku database data (data not covered by seeding). [https://render.com/docs/migrate-from-heroku](https://render.com/docs/migrate-from-heroku)
+
+**Everything else below was not found in the link above or wasn't clear in the steps.**
+- This method creates the Webservice and Database for you.
+- It's possible to use this method to transfer your data to the free database but I haven't got it to work yet.
+- In your GitHub project repo main folder, create a file named Procfile. Put this text inside it. ***web: npm start***
+- In your render dashboard ⇾ click your named project web service ⇾ click environment tab, you’ll need to add the DATABASE_URL and SESSION_SECRET the CLI Plugin generated.
+- When copying data from PostgreSQL, you need to set up the External Database URL for the last step. Go to your dashboard, go into the PostgreSQL database, scroll down to access control and add 0.0.0.0/0
+- That adds an External Database URL above, copy and paste for Step 4 so that your command should look similar to -
+
+```
+pg_restore --verbose  --no-acl --no-owner -d <EXTERNAL CONNECTION STRING> latest.dump
+```
+
+- **Make sure to delete the 0.0.0.0/0 connection once you are done.**
 
 
 ## Removing and Renewing PSQL Database
