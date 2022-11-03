@@ -7,7 +7,7 @@ Navigate to the [Render homepage](https://render.com/) and click on "Get Started
 ## Limitations:
 - The main limitation of the free Render Postgres database instance is that it will be deleted after 90 days. In order to keep your application up and running, you MUST create a new database instance before the 90 day period ends. Check out [Removing and Renewing PSQL Database](#removing-and-renewing-psql-database) for more information.
 - You may only have 'one active free tier database'.
-- Render.com will automatically create a **PAID** postgresql database when you deploy a web service and don't assign it the free Database URL.
+- Render.com may automatically create a **PAID** postgresql database when you deploy a web service.
 - Double check to make sure you have no -Starter Plan- databases if you don't want to be charged.
 - There is a [Migration](#migration) guide below for convenience but requires possibly spending money.
 
