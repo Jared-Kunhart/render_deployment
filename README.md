@@ -261,9 +261,9 @@ When deployment is complete, open your deployed site and check to see if you suc
 
 (https://this-application-name.onrender.com).
 
-## Migration (Costs $)
+## Migration
 
-**-Using Heroku Migration starts you off with a 7$ starter plan.-**
+**-Using Heroku Migration starts you off with a PAID starter plan.-**
 
 This link shows you how to create a web service and migrate your data from Heroku database to Renders database. Use this option if you don't want to lose any heroku database data (data not covered by seeding). [https://render.com/docs/migrate-from-heroku](https://render.com/docs/migrate-from-heroku)
 
