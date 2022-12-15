@@ -42,7 +42,8 @@ user@DESKTOP:~/appacademy/Project1$ PGPASSWORD=FnMoqtKmyopCaWsRswrd psql -h dpg-
 appacademy_projects_psql=>
 ```
 
-Now let's create databases for each of our projects we want to host.
+Now let's create databases for each of our projects we want to host. You can get your username from your newly made Render database under Dashboard Info.
+
 
 ```psql
 CREATE DATABASE project1name_app WITH OWNER appacademy_projects_psql_user;
