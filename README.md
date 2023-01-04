@@ -295,7 +295,7 @@ Each time you get your calendar reminder, follow the steps below.
 1. Navigate to your Render Dashboard, click on your database instance, and
    click on either the "Delete Database" or "Suspend Database" button.
 
-2. Next, follow the instructions in Phase #3 above to create a new database
+2. Next, follow the instructions in Creating a single free Database above to create a new database
    instance.
 
 3. Finally, you will need to update the environment variables for EVERY
