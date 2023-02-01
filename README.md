@@ -14,7 +14,7 @@ Navigate to the [Render homepage](https://render.com/) and click on "Get Started
 
 ## App Academy Projects
 
-### - Creating a single free Database to host all your projects.
+### - Creating a single free Database to host all your projects
 
 Click on the "New +" button in the navigation bar, and click on "PostgreSQL" to create your Postgres database instance.
 
@@ -290,13 +290,11 @@ __Set up calendar reminders for yourself to reset your Render Postgres database
 instance every 85 days so your application(s) will not experience any
 downtime.__
 
-Each time you get your calendar reminder, follow the steps below.
+Each time you get your calendar reminder, follow the steps below. 
 
-1. Navigate to your Render Dashboard, click on your database instance, and
-   click on either the "Delete Database" or "Suspend Database" button.
+1. Navigate to your Render Dashboard, click on your database instance (You may want to save your naming conventions and re-use them) and click on either the "Delete Database" button.
 
-2. Next, follow the instructions in Creating a single free Database above to create a new database
-   instance.
+2. Next, follow the instructions in Creating a single free Database to host all your projects [App Academy Projects](#app-academy-projects)
 
 3. Finally, you will need to update the environment variables for EVERY
    application that was connected to the original database with the new database
