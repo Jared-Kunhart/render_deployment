@@ -56,7 +56,7 @@ If you type \l you can see the databases listed like below.
 
 ![image](https://user-images.githubusercontent.com/89172742/199666807-d386a9f3-c0f6-494a-8dca-93f52db412f2.png)
 
-For every web service we create for our projects, we'll use the Internal Database URL and modify the app database name at the end (more on this later).
+For every web service we create for our projects, we'll use the Internal Database URL (if internal doesn't work use external) and modify the app database name at the end (more on this later).
 
 ### - First App Academy Project (PUG)
 
